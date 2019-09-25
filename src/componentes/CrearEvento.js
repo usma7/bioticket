@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import axios from 'axios';
-
 class CrearEvento extends Component {
-
-
+    constructor(props) {
+        super(props);
+        this.state = {};
+    }
     state = {
         nombre: "",
         categoria: "",
@@ -22,60 +23,70 @@ class CrearEvento extends Component {
             this.setState(newState);
         }
     }
-
     save = () => {
+        axios.post("http://localhost:3001/api/tasks/", { nombre: this.state.nombre, categoria: this.state.categoria,
+        fecha: this.state.fecha, hora: this.state.hora, lugar: this.state.lugar, cantidad: this.state.cantidad,
+        detalle: this.state.detalle })
+    .then(res => console.log(res))
+    .catch(ex => console.error(ex));
 
-				axios.post("http://localhost:3001/api/tasks/", { nombre: this.state.nombre, categoria: this.state.categoria,
-				fecha: this.state.fecha, hora: this.state.hora, lugar: this.state.lugar, cantidad: this.state.cantidad,
-				detalle: this.state.detalle })
-            .then(res => console.log(res))
-            .catch(ex => console.error(ex));
-
-    }
+}
 
     render() {
         return (
-            <div className="container">
+            <form className="input-mysize" action={this.save}>
+                <h3 className="text-center">Crear eventos</h3>
+                <div className="form-group row">
+                    <div className="col-sm-6">
+                        <label>Nombre del evento</label>
+                        <input onChange={this.onKeyPress('nombre')} type="text" className="form-control" placeholder="Nombre evento" />
+                    </div>
+                    <div className="col-sm-6">
+                        <label>Categoría</label>
+                        <select onChange={this.onKeyPress('categoria')} className="form-control" >
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                </div>
+                <div className="form-group row">
+                    <div className="col-sm-6">
+                        <label>Fecha del evento</label>
+                        <input onChange={this.onKeyPress('fecha')} type="date" className="form-control" placeholder="fecha" />
+                    </div>
+                    <div className="col-sm-6">
+                        <label>Hora del evento</label>
+                        <input onChange={this.onKeyPress('hora')} type="text" className="form-control" placeholder="hora" />
+                    </div>
+                </div>
+                <div className="form-group row">
+                    <div className="col-sm-6">
+                        <label>Lugar del evento</label>
+                        <select onChange={this.onKeyPress('lugar')} className="form-control" >
+                            <option>Atanasio</option>
+                            <option>RedBull stadium</option>
+                            <option>la macarena</option>
+                            <option>UDEM</option>
+                            <option>UPB</option>
+                        </select>
+                    </div>
+                    <div className="col-sm-6">
+                        <label>Disponibilidad</label>
+                        <input onChange={this.onKeyPress('cantidad')} type="number" className="form-control" placeholder="numero de personas" />
+                    </div>
 
-                <h2>Formulario para Eventos</h2>
-                <br />
-                <div className="form-row">
-                    <div className="form-group col-md-6">
-                        <label >Nombre</label>
-                        <input onChange={this.onKeyPress('nombre')} value={this.state.name} type="ntext" className="form-control" id="inputNombre" placeholder="Nombre del evento" />
-                    </div>
-                    <div className="form-group col-md-6">
-                        <label >Categoria</label>
-                        <input onChange={this.onKeyPress('categoria')} value={this.state.categoria}  type="text" className="form-control" id="inputCategoria" placeholder="Categoria del evento" />
+                </div>
+                <div className="form-group row">
+                    <div className="col-sm-12">
+                        <label>Detalles del evento</label>
+                        <textarea onChange={this.onKeyPress('detalle')} className="form-control" rows="3" />
                     </div>
                 </div>
-                <div className="form-row">
-                    <div className="form-group col-md-6">
-                        <label >Fecha</label>
-                        <input onChange={this.onKeyPress('fecha')} value={this.state.fecha} type="text" className="form-control" id="inputFecha" placeholder="Fecha del evento" />
-                    </div>
-                    <div className="form-group col-md-6">
-                        <label >Hora</label>
-                        <input onChange={this.onKeyPress('hora')} value={this.state.hora} type="text" className="form-control" id="inputHora" placeholder="Hora" />
-                    </div>
-                </div>
-                <div className="form-row">
-                    <div className="form-group col-md-6">
-                        <label >Lugar</label>
-                        <input onChange={this.onKeyPress('lugar')} value={this.state.lugar} type="text" className="form-control" id="inputFecha" placeholder="Lugar del evento" />
-                    </div>
-                    <div className="form-group col-md-6">
-                        <label >Cantidad</label>
-                        <input onChange={this.onKeyPress('cantidad')} value={this.state.cantidad} type="text" className="form-control" id="inputHora" placeholder="Capacidad del evento" />
-                    </div>
-                </div>
-                <div className="form-group">
-                    <label>Detalle</label>
-                    <input onChange={this.onKeyPress('detalle')} value={this.state.detalle} type="text" className="form-control" id="inputDetalle" placeholder="Detalle del evento" />
-                </div>
-                <br />
-                <button onClick={this.save} type="crear" className="btn btn-primary">Crear</button>
-            </div>
+                <button type="submit" className="btn btn-primary mb-2">Guardar</button>
+            </form>
         );
 
     }

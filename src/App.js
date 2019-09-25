@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import CrearEvento from './componentes/CrearEvento';
+import Principal from './Principal';
 
 function App() {
   return (
     <div className="App">
-      <CrearEvento/>
+      <Principal/>
     </div>
   );
 }
