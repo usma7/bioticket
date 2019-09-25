@@ -1,0 +1,40 @@
+{
+    "todos":[
+        {
+            "nombreevento": "Noche de Entierro",
+            "categoria": "Concierto",
+            "fecha": "10/10/2019",
+            "hora": "13:00:00",
+            "detalle": "",
+            "lugar":"Estadio atanasio",
+            "disponibilidad":"45000"
+        },
+        {
+            "nombreevento": "Noche de Zandungueo",
+            "categoria": "Concierto",
+            "fecha": "10/10/2019",
+            "hora": "13:00:00",
+            "detalle": "",
+            "lugar":"Estadio atanasio",
+            "disponibilidad":"45000"
+        },
+        {
+            "nombreevento": "Noche de Perras",
+            "categoria": "Concierto",
+            "fecha": "10/10/2019",
+            "hora": "13:00:00",
+            "detalle": "",
+            "lugar":"Estadio atanasio",
+            "disponibilidad":"45000"
+        },
+        {
+            "nombreevento": "Noche de Enterrarlo",
+            "categoria": "Concierto",
+            "fecha": "10/10/2019",
+            "hora": "13:00:00",
+            "detalle": "",
+            "lugar":"Estadio atanasio",
+            "disponibilidad":"45000"
+        }
+    ]
+}

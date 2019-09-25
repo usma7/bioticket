@@ -13,7 +13,7 @@
   text-align: right;
 }
 .App-nav2{
-  background-color: #009FE5;
+  background-color: #343a40;
   padding: .1rem 1rem;
 }
 .App-button{
@@ -50,8 +50,8 @@ a, a:hover, a:focus {
 #sidebar {
   min-width: 250px;
   max-width: 250px;
-  background: #fff;
-  color: #009FE5;
+  background: #343a46;
+  color: #fff;
   transition: all 0.3s;
 }
 
@@ -61,12 +61,12 @@ a, a:hover, a:focus {
 
 #sidebar .sidebar-header {
   padding: 20px;
-  background: #fff;
+  background: #343a40;
 }
 
 #sidebar ul.components {
   padding: 20px 0;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid #343a40;
 }
 
 #sidebar ul p {
@@ -81,12 +81,12 @@ a, a:hover, a:focus {
 }
 #sidebar ul li a:hover {
   color: #fff;
-  background: #009FE5;
+  background: #68b0AB;
 }
 
 #sidebar ul li.active > a, a[aria-expanded="true"] {
-  color: #009FE5;
-  background: #fff;
+  color: #fff;
+  background: #343a40;
 }
 
 

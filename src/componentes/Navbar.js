@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
+import img from './logo.png'
 class Navbar extends Component {
     constructor() {
         super();
@@ -19,7 +20,7 @@ class Navbar extends Component {
                         <i className="navbar-toggler-icon"></i> 
                     </button>
                     <div>
-                        <h3 className="text-white">BIOTICKET</h3>
+                        <img src={img} Style="width:120px"></img>
                     </div>
                     
                 </nav>
