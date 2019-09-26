@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import CrearEvento from './CrearEvento';
+import VisualizarEventos from './VisualizarEvento';
+
 
 class Sidebar extends Component {
     constructor() {
@@ -34,7 +36,9 @@ class Sidebar extends Component {
                 <div id="content">
                     <nav className="navbar navbar-default">
                         <div className="container-fluid"> 
+
                             <CrearEvento/>
+
                         </div>
                     </nav>
 
