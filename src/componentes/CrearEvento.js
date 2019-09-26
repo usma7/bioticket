@@ -39,7 +39,7 @@ class CrearEvento extends Component {
                 <div className="form-group row">
                     <div className="col-sm-6">
                         <label>Nombre del evento</label>
-                        <input onChange={this.onKeyPress('nombre')} type="text" className="form-control" placeholder="Nombre evento" />
+                        <input onChange={this.onKeyPress('nombre')} type="text" className="form-control" placeholder="Nombre evento" data-test='name-event' />
                     </div>
                     <div className="col-sm-6">
                         <label>Categoría</label>
@@ -65,6 +65,7 @@ class CrearEvento extends Component {
                     <div className="col-sm-6">
                         <label>Lugar del evento</label>
                         <select onChange={this.onKeyPress('lugar')} className="form-control" >
+                            {/* <option>Seleccione alguno</option> */}
                             <option>Atanasio</option>
                             <option>RedBull stadium</option>
                             <option>la macarena</option>

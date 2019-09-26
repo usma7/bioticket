@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+// import jsquery
 class VisualizarEvento extends Component {
     constructor() {
         super();
@@ -18,10 +18,10 @@ class VisualizarEvento extends Component {
     }
 
     componentDidMount(){
-        this.obtain();
+        this.obtain(fetch);
     }
     
-    obtain() {
+    obtain(fetch) {
         fetch('http://localhost:3001/api/tasks/')
             .then(res => res.json())
             .then(data =>  {
@@ -53,7 +53,7 @@ class VisualizarEvento extends Component {
                         {
                             this.state.eventos.map((data) => {
                                 return(
-                                    <tr>
+                                    <tr data-test="event-row">
                                         <th scope = "row">1</th>
                                         <td>{data.nombre}</td>
                                         <td>{data.categoria}</td>
