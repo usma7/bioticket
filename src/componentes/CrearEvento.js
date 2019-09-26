@@ -29,8 +29,8 @@ class CrearEvento extends Component {
         detalle: this.state.detalle })
     .then(res => console.log(res))
     .catch(ex => console.error(ex));
-
-}
+    } 
+      
 
     render() {
         return (
@@ -44,11 +44,10 @@ class CrearEvento extends Component {
                     <div className="col-sm-6">
                         <label>Categoría</label>
                         <select onChange={this.onKeyPress('categoria')} className="form-control" >
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                            <option>Concierto</option>
+                            <option>Comedia</option>
+                            <option>Deporte</option>
+                            <option>Politica</option>
                         </select>
                     </div>
                 </div>
@@ -85,7 +84,7 @@ class CrearEvento extends Component {
                         <textarea onChange={this.onKeyPress('detalle')} className="form-control" rows="3" />
                     </div>
                 </div>
-                <button type="submit" className="btn btn-primary mb-2">Guardar</button>
+                <button onClick={this.save} type="submit" className="btn btn-primary mb-2">Guardar</button>
             </form>
         );
 
