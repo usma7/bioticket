@@ -1,10 +1,19 @@
 import React, { Component } from 'react';
 import CrearEvento from './CrearEvento';
-
+import VisualizarEventos from './VisualizarEvento';
 class Sidebar extends Component {
     constructor() {
         super();
-
+        this.state = {
+            estshowCrear: true,
+            estshowVisualizar: false
+        };
+    }
+    showCrear() {
+        this.setState({ estshowCrear: true, estshowVisualizar: false});
+    }
+    showVisualizar() {
+        this.setState({ estshowCrear: false, estshowVisualizar: true});
     }
     render() {
         return (
@@ -12,7 +21,7 @@ class Sidebar extends Component {
                 {/**Contenerdor del sidebar */}
                 <nav id="sidebar">
                     <ul className="list-unstyled components">
-                        
+
                         <li className="menu-item nav-item dropdown">
                             <a className="nav-link" id="navbarDropdownMenuLink" data-toggle="dropdown">Mi Perfil</a>
                             <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -22,7 +31,10 @@ class Sidebar extends Component {
                             </div>
                         </li>
                         <li>
-                            <a type="button" onClick="#ss">Consultar Eventos</a>
+                            <a type="button" onClick={this.showCrear.bind(this)}>Crear Eventos</a>
+                        </li>
+                        <li>
+                            <a type="button" onClick={this.showVisualizar.bind(this)}>Consultar Eventos</a>
                         </li>
                         <li>
                             <a type="button" onClick="#">Noticias</a>
@@ -33,8 +45,9 @@ class Sidebar extends Component {
                 {/*Page Content Holder*/}
                 <div id="content">
                     <nav className="navbar navbar-default">
-                        <div className="container-fluid"> 
-                            <CrearEvento/>
+                        <div className="container-fluid">
+                            {this.state.estshowVisualizar && <VisualizarEventos />}
+                            {this.state.estshowCrear && <CrearEvento />}
                         </div>
                     </nav>
 

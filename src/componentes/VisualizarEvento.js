@@ -1,29 +1,38 @@
 import React, { Component } from 'react';
-import { todos } from '../todos.json';
+// import jsquery
 class VisualizarEvento extends Component {
     constructor() {
         super();
         this.state = {
-            todos
+            nombre: "",
+            categoria: "",
+            fecha: "",
+            hora: "",
+            lugar: "",
+            cantidad: "",
+            detalle: "",
+            eventos:[]
         };
         //this.Validacion = this.Validacion.bind(this);
 
     }
+
+    componentDidMount(){
+        this.obtain(fetch);
+    }
+    
+    obtain(fetch) {
+        fetch('http://localhost:3001/api/tasks/')
+            .then(res => res.json())
+            .then(data =>  {
+                this.setState({eventos: data});
+                console.log(this.state.eventos);
+            })
+            .catch(ex => console.error(ex));
+    }
+
+
     render() {
-        const todo = this.state.todos.map((todos, i) => {
-            return (
-                <tr>
-                    <th scope="row">1</th>
-                    <td>{todos.nombreevento}</td>
-                    <td>{todos.categoria}</td>
-                    <td>{todos.fecha}</td>
-                    <td>{todos.hora}</td>
-                    <td>{todos.detalle}</td>
-                    <td>{todos.lugar}</td>
-                    <td>{todos.disponibilidad}</td>
-                </tr>
-            )
-        })
         return (
             <div>
                 <table className="table table-bordered">
@@ -35,13 +44,28 @@ class VisualizarEvento extends Component {
                             <th scope="col">Categoria</th>
                             <th scope="col">Fecha</th>
                             <th scope="col">Hora</th>
-                            <th scope="col">Detalle</th>
                             <th scope="col">Lugar</th>
-                            <th scope="col">Disponibilidad</th>
+                            <th scope="col">Detalle</th>
+                            <th scope="col">Cantidad</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {todo}
+                        {
+                            this.state.eventos.map((data) => {
+                                return(
+                                    <tr data-test="event-row">
+                                        <th scope = "row">1</th>
+                                        <td>{data.nombre}</td>
+                                        <td>{data.categoria}</td>
+                                        <td>{data.fecha}</td>
+                                        <td>{data.hora}</td>
+                                        <td>{data.lugar}</td>
+                                        <td>{data.detalle}</td>
+                                        <td>{data.cantidad}</td>
+                                    </tr>
+                                );
+                            })
+                        }
                     </tbody>
                 </table>
             </div>
