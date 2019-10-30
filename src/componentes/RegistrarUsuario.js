@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from 'axios';
-class CrearEvento extends Component {
+class RegistrarUsuario extends Component {
     constructor(props) {
         super(props);
         this.state = {};
@@ -8,8 +8,7 @@ class CrearEvento extends Component {
     state = {
         nombre: "",
         email: "",
-        contraseña: "",
-        cuenta: ""
+        password: ""
     };
 
     onKeyPress = field => {
@@ -20,43 +19,38 @@ class CrearEvento extends Component {
             this.setState(newState);
         }
     }
-    // save = () => {
-    //     axios.post("http://localhost:3001/api/tasks/", { nombre: this.state.nombre, categoria: this.state.categoria,
-    //     fecha: this.state.fecha, hora: this.state.hora, lugar: this.state.lugar, cantidad: this.state.cantidad,
-    //     detalle: this.state.detalle })
-    // .then(res => console.log(res))
-    // .catch(ex => console.error(ex));
-    // } 
+    save = () => {
+        axios.post("http://localhost:3001/api/users/", { nombre: this.state.nombre, email: this.state.email,
+        password: this.state.password })
+    .then(res => console.log(res))
+    .catch(ex => console.error(ex));
+    } 
 
 
     render() {
         return (
             <form className="input-mysize">
                 <h3 className="text-center">Registrar usuario</h3>
-                <div class="form-group">
-                    <div class="form-group">
-                        <label for="email">Nombre:</label>
-                        <input type="email" class="form-control" id="email"/>
+                <div className="form-group">
+                    <div className="form-group">
+                        <label for="name">Nombre:</label>
+                        <input onChange={this.onKeyPress('nombre')} type="text" className="form-control" placeholder="Nombre" data-test='name-user' />
                     </div>
                     <div class="form-group">
                         <label for="email">Email:</label>
-                        <input type="email" class="form-control" id="email"/>
+                        <input onChange={this.onKeyPress('email')} type="email" className="form-control" placeholder="Email" data-test='email-user'/>
                     </div>
                     <div class="form-group">
                         <label for="pwd">Password:</label>
-                        <input type="password" class="form-control" id="pwd"/>
+                        <input onChange={this.onKeyPress('password')} type="password" className="form-control" placeholder="Password" data-test='password-user'/>
                     </div>
-                    <div class="form-group">
-                        <label for="email">N° Cuenta:</label>
-                        <input type="email" class="form-control" id="email"/>
-                    </div>
-                    <button type="submit" className="btn btn-primary mb-2">Registrarse</button>
                 </div>
+                <button onClick={this.save} type="submit" className="btn btn-primary mb-2">Registrarse</button>
             </form>
-                        );
+                );
                 
-                    }
+            }
                 
-                }
+        }
                 
-export default CrearEvento;
+export default RegistrarUsuario;
