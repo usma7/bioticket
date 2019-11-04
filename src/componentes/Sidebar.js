@@ -1,19 +1,24 @@
 import React, { Component } from 'react';
 import CrearEvento from './CrearEvento';
 import VisualizarEventos from './VisualizarEvento';
+import ComprarEvento from './ComprarEvento';
 class Sidebar extends Component {
     constructor() {
         super();
         this.state = {
             estshowCrear: true,
-            estshowVisualizar: false
+            estshowVisualizar: false,
+            estshowComprar: false
         };
     }
     showCrear() {
-        this.setState({ estshowCrear: true, estshowVisualizar: false});
+        this.setState({ estshowCrear: true, estshowVisualizar: false, estshowComprar: false});
     }
     showVisualizar() {
-        this.setState({ estshowCrear: false, estshowVisualizar: true});
+        this.setState({ estshowCrear: false, estshowVisualizar: true, estshowComprar: false});
+    }
+    showComprar() {
+        this.setState({ estshowCrear: false, estshowVisualizar: false, estshowComprar: true});
     }
     render() {
         return (
@@ -37,7 +42,7 @@ class Sidebar extends Component {
                             <a type="button" onClick={this.showVisualizar.bind(this)}>Consultar Eventos</a>
                         </li>
                         <li>
-                            <a type="button" onClick="#">Noticias</a>
+                            <a type="button" onClick={this.showComprar.bind(this)}>Comprar Evento</a>
                         </li>
                     </ul>
                 </nav>
@@ -48,6 +53,7 @@ class Sidebar extends Component {
                         <div className="container-fluid">
                             {this.state.estshowVisualizar && <VisualizarEventos />}
                             {this.state.estshowCrear && <CrearEvento />}
+                            {this.state.estshowComprar && <ComprarEvento />}
                         </div>
                     </nav>
 
