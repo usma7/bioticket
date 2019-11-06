@@ -61,7 +61,7 @@ render() {
                     </div>
                     <div className="col-sm-6">
                         <label>Cantidad de boletas</label>
-                        <input onChange={this.onKeyPress('cantidad')} type="text" className="form-control" placeholder="Maximo 3 boletas por persona"/>
+                        <input onChange={this.onKeyPress('cantidad')} type="number" className="form-control" placeholder="Maximo 3 boletas por persona"/>
                     </div>
                 </div>
                 <button onClick={this.save} type="submit" className="btn btn-primary mb-2">Comprar</button>
