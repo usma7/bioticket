@@ -2,23 +2,28 @@ import React, { Component } from 'react';
 import CrearEvento from './CrearEvento';
 import VisualizarEventos from './VisualizarEvento';
 import RegistrarUsuario from './RegistrarUsuario';
+import ComprarEvento from './ComprarEvento';
 class Sidebar extends Component {
     constructor() {
         super();
         this.state = {
             estshowCrear: false,
-            estshowVisualizar: false,
-            estshowRegistrar: true
+            estshowVisualizar: true,
+            estshowRegistrar: false,
+            estshowComprar: false
         };
     }
     showCrear() {
-        this.setState({ estshowCrear: true, estshowVisualizar: false, estshowRegistrar: false});
+        this.setState({ estshowCrear: true, estshowVisualizar: false, estshowRegistrar: false, estshowComprar: false});
     }
     showVisualizar() {
-        this.setState({ estshowCrear: false, estshowVisualizar: true, estshowRegistrar: false});
+        this.setState({ estshowCrear: false, estshowVisualizar: true, estshowRegistrar: false, estshowComprar: false});
     }
     showRegistrar() {
-        this.setState({ estshowCrear: false, estshowVisualizar: false, estshowRegistrar: true});
+        this.setState({ estshowCrear: false, estshowVisualizar: false, estshowRegistrar: true, estshowComprar: false});
+    }
+    showComprar() {
+        this.setState({ estshowCrear: false, estshowVisualizar: false, estshowRegistrar: false, estshowComprar: true});
     }
     render() {
         return (
@@ -44,6 +49,9 @@ class Sidebar extends Component {
                         <li>
                             <a type="button" onClick={this.showRegistrar.bind(this)}>Registrar Usuario</a>
                         </li>
+                        <li>
+                            <a type="button" onClick={this.showComprar.bind(this)}>Comprar Evento</a>
+                        </li>
                     </ul>
                 </nav>
 
@@ -54,6 +62,7 @@ class Sidebar extends Component {
                             {this.state.estshowVisualizar && <VisualizarEventos />}
                             {this.state.estshowCrear && <CrearEvento />}
                             {this.state.estshowRegistrar && <RegistrarUsuario />}
+                            {this.state.estshowComprar && <ComprarEvento />}
                         </div>
                     </nav>
 
